@@ -1,0 +1,35 @@
+Welcome to Selenium using Java
+
+Web automation : Browser -> 	HTML
+				CSS
+				JavaScript
+Why Selenium?
+Free
+Open source
+Community
+Its support of multiple programming language - Java, C#, Python, JavaScript, PHP, 
+It platform - Windows, Mac, Linux,...
+Cross browser testing - IE, Firefox, Chrome, Safari, Edge, PhantomJS, HTMLUnit
+Google, 
+Regular update 
+Appium - Selenium
+
+1. Selenium IDE
+2. Selenium RC
+3. Selenium WebDriver
+4. Selenium Grid
+
+Java - 
+JDK
+Eclipse
+Firefox V.47
+	Addons
+		Selenium IDE
+		Firebug
+		Firepath
+
+https://ftp.mozilla.org/pub/firefox/releases/47.0/win32/en-US/
+
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+http://www.eclipse.org/downloads/
