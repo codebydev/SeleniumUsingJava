@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <title>Selenium test</title>
+</head>
+<body>
+    <button id="alert">Alert</button>
+    <button id="confirm">Confirm</button>
+    <button id="prompt">Prompt</button>
+    <script>
+        $('#alert').click(function () {
+            alert("Hello Alert");
+        });
+
+        $('#confirm').click(function () {
+            confirm("Hello Alert");
+        });
+
+        $('#prompt').click(function () {
+            var name=prompt("Enter your name");
+        });
+    </script>
+</body>
+
+</html>
+
