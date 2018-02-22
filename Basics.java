@@ -1,11 +1,20 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+
 
 public class Basics {
 
@@ -223,6 +232,79 @@ public class Basics {
 		
 		Thread.sleep(6000);
 		
+		driver.quit();
+	}
+	
+	@Test
+	public void clickOnRadioButton() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		FirefoxDriver driver=new FirefoxDriver();
+		driver.get("https://www.facebook.com/");
+		
+		Thread.sleep(6000);
+		driver.findElement(By.id("u_0_b")).click();
+		Boolean selected = driver.findElement(By.id("u_0_b")).isSelected();
+		System.out.println("Female radio button selected : "+selected);
+		
+		selected = driver.findElement(By.id("u_0_c")).isSelected();
+		System.out.println("Male radio button selected : "+selected);
+		
+		Thread.sleep(6000);
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void clickOnCheckbox() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		FirefoxDriver driver=new FirefoxDriver();
+		driver.get("http://uitestpractice.com/Students/Form");
+		
+		Thread.sleep(6000);
+		driver.findElement(By.xpath("//*[@value='dance']")).click();
+		Boolean selected = driver.findElement(By.xpath("//*[@value='dance']")).isSelected();
+		System.out.println("Dancing check box selected : "+selected);
+		
+		selected = driver.findElement(By.xpath("//*[@value='read']")).isSelected();
+		System.out.println("Reading check box selected : "+selected);
+		
+		Thread.sleep(6000);
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void SelectDropDownValue() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		FirefoxDriver driver=new FirefoxDriver();
+		driver.get("https://www.facebook.com/");
+		
+		Thread.sleep(6000);
+		
+		Select dropdown=new Select(driver.findElement(By.id("day")));		
+		dropdown.selectByValue("14");
+		
+		dropdown=new Select(driver.findElement(By.id("month")));
+		dropdown.selectByVisibleText("Sept");
+		
+		Thread.sleep(6000);
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void takeScreenshot() throws InterruptedException, IOException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://www.facebook.com/");
+		
+		File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(src, new File("Test.png"));
+				
 		driver.quit();
 	}
 }
