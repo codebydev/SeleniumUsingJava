@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
@@ -11,7 +12,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
@@ -305,6 +309,139 @@ public class Basics {
 		File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(src, new File("Test.png"));
 				
+		driver.quit();
+	}
+	
+	@Test
+	public void sychronizeUsingSleep() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.get("http://uitestpractice.com/Students/Contact");
+		
+		driver.findElement(By.partialLinkText("This is")).click();
+		Thread.sleep(20000);
+		String text=driver.findElement(By.className("ContactUs")).getText();
+		
+		Assert.assertTrue(text.contains("Python"));
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void sychronizeUsingImplicitWait() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.get("http://uitestpractice.com/Students/Contact");
+		
+		driver.findElement(By.partialLinkText("This is")).click();
+		// Thread.sleep(20000);
+		String text=driver.findElement(By.className("ContactUs")).getText();
+		
+		Assert.assertTrue(text.contains("Python"));
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void sychronizeUsingExplcitWait() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		// driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.get("http://uitestpractice.com/Students/Contact");
+		
+		driver.findElement(By.partialLinkText("This is")).click();
+		// Thread.sleep(20000);
+		
+		WebDriverWait wait =new WebDriverWait(driver, 20000);
+		
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("LoadImage")));
+		
+		String text=driver.findElement(By.className("ContactUs")).getText();
+		
+		Assert.assertTrue(text.contains("Python"));
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void sychronizeUsingFluentWait() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		// driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.get("http://uitestpractice.com/Students/Contact");
+		
+		driver.findElement(By.partialLinkText("This is")).click();
+		// Thread.sleep(20000);
+		
+		// WebDriverWait wait =new WebDriverWait(driver, 20000);
+		
+		FluentWait<WebDriver> wait=new FluentWait<WebDriver>(driver)
+				.withTimeout(20,  TimeUnit.SECONDS)
+				.pollingEvery(50, TimeUnit.MILLISECONDS);
+		
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("LoadImage")));
+		
+		String text=driver.findElement(By.className("ContactUs")).getText();
+		
+		Assert.assertTrue(text.contains("Python"));
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void sychronizeUsingPageWait() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		driver.get("http://uitestpractice.com/Students/Contact");
+		
+		driver.findElement(By.partialLinkText("This is")).click();
+		// Thread.sleep(20000);
+		
+		// WebDriverWait wait =new WebDriverWait(driver, 20000);
+		
+		FluentWait<WebDriver> wait=new FluentWait<WebDriver>(driver)
+				.withTimeout(20,  TimeUnit.SECONDS)
+				.pollingEvery(50, TimeUnit.MILLISECONDS);
+		
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("LoadImage")));
+		
+		String text=driver.findElement(By.className("ContactUs")).getText();
+		
+		Assert.assertTrue(text.contains("Python"));
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void sychronizeUsingScriptLoadWait() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.manage().timeouts().setScriptTimeout(120, TimeUnit.SECONDS);
+		driver.get("http://uitestpractice.com/Students/Contact");
+		
+		driver.findElement(By.partialLinkText("This is")).click();
+		// Thread.sleep(20000);
+		
+		// WebDriverWait wait =new WebDriverWait(driver, 20000);
+		
+		FluentWait<WebDriver> wait=new FluentWait<WebDriver>(driver)
+				.withTimeout(20,  TimeUnit.SECONDS)
+				.pollingEvery(50, TimeUnit.MILLISECONDS);
+		
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("LoadImage")));
+		
+		String text=driver.findElement(By.className("ContactUs")).getText();
+		
+		Assert.assertTrue(text.contains("Python"));
+		
 		driver.quit();
 	}
 }
