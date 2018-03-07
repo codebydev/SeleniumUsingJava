@@ -444,4 +444,34 @@ public class Basics {
 		
 		driver.quit();
 	}
+	
+	@Test
+	public void fileUploadUsingSendKeys() throws InterruptedException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.get("http://uitestpractice.com/Students/Widgets");
+		
+		driver.findElement(By.id("image_file")).sendKeys("C:\\Users\\hanumanthargs\\Desktop\\VS 2017 installation.png");
+		
+		Thread.sleep(4000);
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void fileUploadUsingAutoIt() throws InterruptedException, IOException
+	{
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.get("http://uitestpractice.com/Students/Widgets");
+		
+		driver.findElement(By.id("image_file")).click();
+		
+		Runtime.getRuntime().exec("uploadimage.exe");
+		
+		Thread.sleep(4000);
+		
+		driver.quit();
+	}
 }
