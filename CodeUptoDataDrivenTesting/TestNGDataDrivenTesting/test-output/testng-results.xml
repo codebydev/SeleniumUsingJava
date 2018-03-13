@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2018-03-13T09:52:53Z" name="Default suite" finished-at="2018-03-13T09:53:33Z" duration-ms="39955">
+    <groups>
+    </groups>
+    <test started-at="2018-03-13T09:52:53Z" name="Default test" finished-at="2018-03-13T09:53:33Z" duration-ms="39955">
+      <class name="com.facebook.login.loginfb">
+        <test-method signature="login(java.lang.String, java.lang.String)[pri:0, instance:com.facebook.login.loginfb@7dc0f706]" started-at="2018-03-13T15:22:53Z" name="login" data-provider="authentication" finished-at="2018-03-13T15:23:09Z" duration-ms="16673" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[a@a.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[abcd1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="login(java.lang.String, java.lang.String)[pri:0, instance:com.facebook.login.loginfb@7dc0f706]" started-at="2018-03-13T15:23:09Z" name="login" data-provider="authentication" finished-at="2018-03-13T15:23:21Z" duration-ms="11593" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[b@b.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[abcd12*&]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="login(java.lang.String, java.lang.String)[pri:0, instance:com.facebook.login.loginfb@7dc0f706]" started-at="2018-03-13T15:23:21Z" name="login" data-provider="authentication" finished-at="2018-03-13T15:23:33Z" duration-ms="11666" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[b.b@b.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[@#$@12ab]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+      </class> <!-- com.facebook.login.loginfb -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="facebook testing cycle">
+	<test name="Regression 1">
+		<classes>
+			<class name="com.facebook.login.classOne" />
+			<class name="com.facebook.login.classTwo" />
+		</classes>
+	</test>
+	
+	<test name="Regression 2">
+		<classes>			
+			<class name="com.facebook.login.classTwo" />
+		</classes>
+	</test>
+</suite>
